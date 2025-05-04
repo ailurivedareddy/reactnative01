@@ -1,29 +1,33 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Platform } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 
 const ProfileInfo = () => {
-  const [fullName, setFullName] = useState('Sajin Tamang');
-  const [email, setEmail] = useState('Sajin Tamang @ Figma .com');
-  const [phoneNumber, setPhoneNumber] = useState('+61 0413336825');
+  const [fullName, setFullName] = useState('jack');
+  const [email, setEmail] = useState('xyz@gmail.com');
+  const [phoneNumber, setPhoneNumber] = useState('1231231234');
 
   const handleSettingsChange = () => {
     console.log('Settings Updated');
   };
 
+  // Validate email format
+  const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+  // Validate phone number: must have exactly 10 digits total
+  const digitsOnly = phoneNumber.replace(/\D/g, '');
+  const isPhoneValid = /^\d{10}$/.test(digitsOnly);
+
+  // Enable save only if all fields are filled and valid
+  const isSaveEnabled =
+    fullName.trim() !== '' &&
+    isEmailValid &&
+    isPhoneValid;
+
   return (
     <View style={styles.container}>
-      {/* Header */}
-      <View style={styles.header}>
-        <TouchableOpacity>
-          <Icon name="arrow-back" size={24} color="#000" />
-        </TouchableOpacity>
-        <Text style={styles.headerTitle}>Profile Settings</Text>
-      </View>
+      <View style={styles.header}></View>
 
-      {/* Input Fields inside Card-like Containers */}
       <View style={styles.inputContainer}>
-        {/* Full Name */}
         <View style={styles.card}>
           <Text style={styles.label}>FULL NAME</Text>
           <TextInput
@@ -31,9 +35,11 @@ const ProfileInfo = () => {
             value={fullName}
             onChangeText={setFullName}
           />
+          {fullName.trim() === '' && (
+            <Text style={{ color: 'red', fontSize: 12 }}>Full name is required</Text>
+          )}
         </View>
 
-        {/* Email Address */}
         <View style={styles.card}>
           <Text style={styles.label}>EMAIL ADDRESS</Text>
           <TextInput
@@ -42,9 +48,11 @@ const ProfileInfo = () => {
             onChangeText={setEmail}
             keyboardType="email-address"
           />
+          {!isEmailValid && email !== '' && (
+            <Text style={{ color: 'red', fontSize: 12 }}>Invalid email address</Text>
+          )}
         </View>
 
-        {/* Phone Number */}
         <View style={styles.card}>
           <Text style={styles.label}>PHONE NUMBER</Text>
           <TextInput
@@ -53,12 +61,18 @@ const ProfileInfo = () => {
             onChangeText={setPhoneNumber}
             keyboardType="phone-pad"
           />
+          {!isPhoneValid && phoneNumber !== '' && (
+            <Text style={{ color: 'red', fontSize: 12 }}>Phone number must contain exactly 10 digits</Text>
+          )}
         </View>
       </View>
 
-      {/* Button */}
-      <TouchableOpacity style={styles.button} onPress={handleSettingsChange}>
-        <Text style={styles.buttonText}>CHANGE SETTINGS</Text>
+      <TouchableOpacity
+        style={[styles.button, !isSaveEnabled && styles.disabledButton]}
+        onPress={handleSettingsChange}
+        disabled={!isSaveEnabled}
+      >
+        <Text style={styles.buttonText}>SAVE</Text>
       </TouchableOpacity>
     </View>
   );
@@ -73,23 +87,19 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 30,
-  },
-  headerTitle: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    marginLeft: 10,
+    marginBottom: 5,
   },
   inputContainer: {
     flex: 1,
   },
   card: {
+    height: 90,
     backgroundColor: '#fff',
     borderWidth: 1,
-    borderColor: '##d3d3d3',
-    borderRadius: 4,
-    padding: 15,
-    marginBottom: 10,
+    borderColor: '#d3d3d3',
+    borderRadius: 8,
+    padding: 10,
+    marginBottom: 12,
     shadowColor: '#BBB',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.25,
@@ -99,7 +109,6 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 12,
     color: '#888',
-    marginBottom: 5,
   },
   input: {
     height: 40,
@@ -112,6 +121,9 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     alignItems: 'center',
     marginTop: 20,
+  },
+  disabledButton: {
+    backgroundColor: '#ccc',
   },
   buttonText: {
     color: '#fff',

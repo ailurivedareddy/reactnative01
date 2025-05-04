@@ -16,7 +16,7 @@ class MyOrders extends Component {
       <View id='ordered'> 
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
           <View style={[styles.card, styles.elevated]}>
-            <Image source={require('../assets/biryani.jpg')} style={styles.cardImg} />
+            <Image source={require('../../assets/biryani.jpg')} style={styles.cardImg} />
             <View style={styles.cardBody}>
               <Text style={styles.cardTitle}>Biryani</Text>
               <Text style={styles.cardSubtitle}>Spicy and flavorful</Text>
@@ -24,7 +24,7 @@ class MyOrders extends Component {
           </View>
 
           <View style={[styles.card, styles.elevated]}>
-            <Image source={require('../assets/biryani.jpg')} style={styles.cardImg} />
+            <Image source={require('../../assets/biryani.jpg')} style={styles.cardImg} />
             <View style={styles.cardBody}>
               <Text style={styles.cardTitle}>Haleem</Text>
               <Text style={styles.cardSubtitle}>Rich and hearty</Text>
@@ -32,7 +32,7 @@ class MyOrders extends Component {
           </View>
 
           <View style={[styles.card, styles.elevated]}>
-            <Image source={require('../assets/biryani.jpg')} style={styles.cardImg} />
+            <Image source={require('../../assets/biryani.jpg')} style={styles.cardImg} />
             <View style={styles.cardBody}>
               <Text style={styles.cardTitle}>Shawarma</Text>
               <Text style={styles.cardSubtitle}>Middle Eastern Wrap</Text>
@@ -40,7 +40,7 @@ class MyOrders extends Component {
           </View>
 
           <View style={[styles.card, styles.elevated]}>
-            <Image source={require('../assets/biryani.jpg')} style={styles.cardImg} />
+            <Image source={require('../../assets/biryani.jpg')} style={styles.cardImg} />
             <View style={styles.cardBody}>
               <Text style={styles.cardTitle}>Mandi</Text>
               <Text style={styles.cardSubtitle}>Arabic rice dish</Text>
@@ -48,7 +48,7 @@ class MyOrders extends Component {
           </View>
 
           <View style={[styles.card, styles.elevated]}>
-            <Image source={require('../assets/biryani.jpg')} style={styles.cardImg} />
+            <Image source={require('../../assets/biryani.jpg')} style={styles.cardImg} />
             <View style={styles.cardBody}>
               <Text style={styles.cardTitle}>Butter Chicken</Text>
               <Text style={styles.cardSubtitle}>Creamy & rich</Text>
@@ -65,7 +65,7 @@ class MyOrders extends Component {
 const styles = StyleSheet.create({
   container: {
     paddingVertical: 20,
-    top: -56,
+    top: -46,
   },
   header: {
     flexDirection: 'row',
@@ -77,10 +77,11 @@ const styles = StyleSheet.create({
   headingText: {
     fontWeight: 'bold',
     fontSize: 20,
+    color:'#3e3f40'
   },
   seeAllText: {
     fontSize: 15,
-    color: '#E5B143', // Blue color for "See All"
+    color: '#E5B143',
     fontWeight: 'bold',
     right:13
   },
@@ -93,7 +94,7 @@ const styles = StyleSheet.create({
   },
   elevated: {
     height: 192,
-    elevation: 4,
+    //elevation: 4,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,

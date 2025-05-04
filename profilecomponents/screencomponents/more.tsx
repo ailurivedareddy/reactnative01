@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const More = () => {
@@ -7,28 +7,34 @@ const More = () => {
     <View style={styles.wrapper}>
       <Text style={styles.card}>MORE</Text>
 
-      <View style={styles.box}>
-        <Icon name="star-rate" size={28} color="#888" style={styles.icon} />
-        <View>
-          <Text style={styles.mainText}>Rate Us</Text>
-          <Text style={styles.subText}>Rate us on play store</Text>
+      <TouchableOpacity activeOpacity={0.7}>
+        <View style={styles.box}>
+          <Icon name="star-rate" size={24} color="#BBB" style={styles.icon} />
+          <View>
+            <Text style={styles.mainText}>Rate Us</Text>
+            <Text style={styles.subText}>Rate us on play store</Text>
+          </View>
+          <Icon name="chevron-right" size={26} color="#BBB" style={styles.rightIcon} />
         </View>
-        <Icon name="chevron-right" size={30} color="#888" style={styles.rightIcon} />
-      </View>
+      </TouchableOpacity>
 
-      <View style={styles.box}>
-        <Icon name="help-outline" size={28} color="#888" style={styles.icon} />
-        <View>
-          <Text style={styles.mainText}>FAQ'S</Text>
-          <Text style={styles.subText}>Verified customer reviews and feedback</Text>
+      <TouchableOpacity activeOpacity={0.7}>
+        <View style={styles.box}>
+          <Icon name="help-outline" size={24} color="#BBB" style={styles.icon} />
+          <View>
+            <Text style={styles.mainText}>FAQ'S</Text>
+            <Text style={styles.subText}>Verified customer reviews and feedback</Text>
+          </View>
+          <Icon name="chevron-right" size={26} color="#BBB" style={styles.rightIcon} />
         </View>
-        <Icon name="chevron-right" size={30} color="#888" style={styles.rightIcon} />
-      </View>
+      </TouchableOpacity>
 
-      <View style={styles.box}>
-        <Icon name="logout" size={28} color="#888" style={styles.icon} />
-        <Text style={styles.logoutText}>LOGOUT</Text>
-      </View>
+      <TouchableOpacity activeOpacity={0.7}>
+        <View style={styles.box}>
+          <Icon name="logout" size={24} color="#BBB" style={styles.icon} />
+          <Text style={styles.logoutText}>LOGOUT</Text>
+        </View>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -43,45 +49,47 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 20,
     paddingHorizontal: 8,
-    color: '#2C3E50',  // Dark blue for card header
+    color: '#3e3f40',
   },
   box: {
     width: 340,
-    height: 60,
+    height: 66,
     borderWidth: 1,
-    borderColor: '#d3d3d3', // Light border color
-    borderRadius: 8,
-    padding: 5,
+    borderColor: '#d3d3d3',
+    borderRadius: 4,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
     backgroundColor: '#fff',
     flexDirection: 'row',
     alignItems: 'center',
     gap: 10,
-    elevation: 5, // Shadow for Android
-    shadowColor: '#000', // Shadow for iOS
-    shadowOffset: { width: 0, height: 2 }, // Shadow direction
-    shadowOpacity: 0.1, // Shadow opacity
-    shadowRadius: 3, // Shadow blur radius
+    elevation: 5,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 1,
   },
   icon: {
-    width: 30,
+    width: 26,
   },
   rightIcon: {
     position: 'absolute',
-    right: 15, 
+    right: 15,
   },
   mainText: {
     fontWeight: 'bold',
     fontSize: 16,
-    color: '#34495E',  // Dark grey for text like Rate Us, FAQ's
+    color: '#34495E',
   },
   subText: {
     fontSize: 12,
-    color: '#7F8C8D',  // Lighter grey for description text
+    color: '#7F8C8D',
   },
   logoutText: {
+    borderRadius:8,
     fontWeight: 'bold',
     fontSize: 16,
-    color: '',
+    color: '#5c5c5c',
   },
 });
 
